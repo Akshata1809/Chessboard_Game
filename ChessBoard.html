@@ -1,49 +1,21 @@
+
 <!DOCTYPE html>
 <html>
 <style type="text/css">
-    table , td ,tr
+     td
     {
-        border :2px solid purple;
+        border :2px solid black; 
         border-collapse :collapse;
-        width :1000px;
-        height:50px;
+        height:100px;
+        min-width :100px;
+        min-height:100px;
+        max-width: 100px;
+        max-height: 100px;
     }
-</style>   
-<script>
-    document.write("<table>");
-    for(i=1;i<=8;i++)
-    {
-        document.write("<tr>");
-        if(i%2==0)
-        {
-            for(j=1;j<=8;j++)
-            {
-                if(j%2==0)
-                {
-                    document.write("<td style='background:black'></td>");
-                }
-                else
-                {
-                    document.write("<td style='background:white'></td>");
-                }
-            }
-        }
-        else
-        {
-            for(j=1;j<=8;j++)
-            {
-                if(j%2==0)
-                {
-                    document.write("<td style='background:white'></td>");
-                }
-                else
-                {
-                    document.write("<td style='background:black'></td>");
-                }
-            }
-        }
-        document.write("</tr>");
-    }
-    document.write("</table>");
-</script>
+</style>
+<script src = "main.js"></script>
+
+<body onload = "chessBoard()">
+    <table id="chesstable"> </table>
+</body>
 </html>

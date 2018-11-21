@@ -48,40 +48,89 @@ class Pawn extends Piece {
         super(color, position, image, point, name);
     }
 }
+ white_pawn=[];
+ black_pawn=[];
 
-//white party
-const whiteking = new Piece("White", "1E","whiteking_img",1,"whiteking");
-const whitequeen = new Piece("White", "1D","whitequeen_img",1,"whitequeen");
-const whiterook1 = new Piece("White", "1A","whiterook1_img",1,"whiterook1");
-const whiterook2 = new Piece("White", "1H","whiterook2_img",1,"whiterook2");
-const whiteknight1 = new Piece("White", "1B","whiteknight1_img",1,"whiteknight1");
-const whiteknight2 = new Piece("White", "1G","whiteknight2_img",1,"whiteknight2");
-const whitebishop1 = new Piece("White", "1C","whitebishop1_img",1,"whitebishop1");
-const whitebishop2 = new Piece("White", "1F","whitebishop2_img",1,"whitebishop2");
-const whitepawn1 = new Piece("White", "2A","whitepawn1",1,"whitepawn1");
-const whitepawn2 = new Piece("White", "2B","whitepawn2",1,"whitepawn2");
-const whitepawn3 = new Piece("White", "2C","whitepawn3",1,"whitepawn3");
-const whitepawn4 = new Piece("White", "2D","whitepawn4",1,"whitepawn4");
-const whitepawn5 = new Piece("White", "2E","whitepawn5",1,"whitepawn5");
-const whitepawn6 = new Piece("White", "2F","whitepawn6",1,"whitepawn6");
-const whitepawn7 = new Piece("White", "2G","whitepawn7",1,"whitepawn7");
-const whitepawn8 = new Piece("White", "2H","whitepawn8",1,"whitepawn8");
+for(i=0;i<8;i++)
+{
+    white_pawn.push(new Pawn("white",null,null,1,"whitepawn"+i));
+    black_pawn.push(new Pawn("black",null,null,1,"blackpawn"+i));
 
-//black party
+}
+ 
 
-const blackking = new Piece("black", "8E","blackking_img",1,"blackking");
-const blackqueen = new Piece("black", "8D","blackqueen_img",1,"blackqueen");
-const whitepawn1 = new Piece("black", "8A","whitepawn1_img",1,"whitepawn1");
-const blackrook2 = new Piece("black", "8H","whitepawn2_img",1,"whitepawn2");
-const blackknight1 = new Piece("black", "8B","blackknight1_img",1,"blackknight1");
-const blackknight2 = new Piece("black", "1G","blackknight2_img",1,"blackknight2");
-const blackbishop1 = new Piece("black", "1C","blackbishop1_img",1,"blackbishop1");
-const blackbishop2 = new Piece("black", "1F","blackbishop2_img",1,"blackbishop2");
-const blackpawn1 = new Piece("black", "2A","blackpawn1_img",1,"blackpawn1");
-const blackpawn2 = new Piece("black", "2B","blackpawn2_img",1,"blackpawn2");
-const blackpawn3 = new Piece("black", "2C","blackpawn3_img",1,"blackpawn3");
-const blackpawn4 = new Piece("black", "2D","blackpawn4_img",1,"blackpawn4");
-const blackpawn5 = new Piece("black", "2E","blackpawn5_img",1,"blackpawn5");
-const blackpawn6 = new Piece("black", "2F","blackpawn6_img",1,"blackpawn6");
-const blackpawn7 = new Piece("black", "2G","blackpawn7_img",1,"blackpawn7");
-const blackpawn8 = new Piece("black", "2H","blackpawn8_img",1,"blackpawn8");
+const whiteking = new King("White", null,null,1,"whiteking");
+const whitequeen = new Queen("White", null,null,1,"whitequeen");
+const blackking = new Piece("black", null,null,1,"blackking");
+const blackqueen = new Piece("black", null,null,1,"blackqueen");
+
+white_rook=[];
+white_knight=[];
+white_bishop=[];
+black_rook=[];
+black_knight=[];
+black_bishop=[];
+
+for(i=0;i<2;i++)
+{
+    white_rook.push(new Pawn("black",null,null,1,"white_rook"+i));
+    white_knight.push(new Pawn("black",null,null,1,"white_knight"+i));
+    white_bishop.push(new Pawn("black",null,null,1,"white_bishop"+i));
+    black_rook.push(new Pawn("black",null,null,1,"black_rook"+i));
+    black_knight.push(new Pawn("black",null,null,1,"black_knight"+i));
+    black_bishop.push(new Pawn("black",null,null,1,"black_bishop"+i));
+}
+
+console.dir(white_pawn);
+
+  let chessBoard = function () {
+
+    var table = document.getElementById("chesstable");
+    for (var i = 0; i < 8; i++) {
+        var rows = table.insertRow();
+        for (var j = 0; j < 8; j++) {
+            var column = rows.insertCell();
+            if ((i + j) % 2 == 0) {
+                column.style.backgroundColor = 'white';
+            }
+            else {
+                column.style.backgroundColor = "black";
+            }
+        }
+    }
+    for(i=0;i<8;i++)
+    {
+        document.getElementById("chesstable").rows[1].cells[i].innerHTML = "<img width=50% src='images\\white_pawn.svg'>";
+        document.getElementById("chesstable").rows[6].cells[i].innerHTML = "<img width=50% src='images\\black_pawn.svg'>";
+    }
+  
+
+    document.getElementById("chesstable").rows[0].cells[4].innerHTML = "<img width=50% src='images\\white_king.svg'>";
+    document.getElementById("chesstable").rows[0].cells[3].innerHTML = "<img width=50% src='images\\white_queen.svg'>";
+    document.getElementById("chesstable").rows[0].cells[2].innerHTML = "<img width=50% src='images\\white_bishop.svg'>";
+    document.getElementById("chesstable").rows[0].cells[5].innerHTML = "<img width=50% src='images\\white_bishop.svg'>";
+    document.getElementById("chesstable").rows[0].cells[0].innerHTML = "<img width=50% src='images\\white_rook.svg'>";
+    document.getElementById("chesstable").rows[0].cells[7].innerHTML = "<img width=50% src='images\\white_rook.svg'>";
+    document.getElementById("chesstable").rows[0].cells[1].innerHTML = "<img width=50% src='images\\white_knight.svg'>";
+    document.getElementById("chesstable").rows[0].cells[6].innerHTML = "<img width=50% src='images\\white_knight.svg'>";
+
+
+    //document.getElementById("chesstable").rows[6].cells[0].innerHTML = "<img width=50% src='images\\black_pawn.svg'>";
+   // document.getElementById("chesstable").rows[6].cells[1].innerHTML = "<img width=50% src='images\\black_pawn.svg'>";
+   // document.getElementById("chesstable").rows[6].cells[2].innerHTML = "<img width=50% src='images\\black_pawn.svg'>";
+   // document.getElementById("chesstable").rows[6].cells[3].innerHTML = "<img width=50% src='images\\black_pawn.svg'>";
+   // document.getElementById("chesstable").rows[6].cells[4].innerHTML = "<img width=50% src='images\\black_pawn.svg'>";
+   // document.getElementById("chesstable").rows[6].cells[5].innerHTML = "<img width=50% src='images\\black_pawn.svg'>";
+   // document.getElementById("chesstable").rows[6].cells[6].innerHTML = "<img width=50% src='images\\black_pawn.svg'>";
+   // document.getElementById("chesstable").rows[6].cells[7].innerHTML = "<img width=50% src='images\\black_pawn.svg'>";
+
+    document.getElementById("chesstable").rows[7].cells[4].innerHTML = "<img width=50% src='images\\black_king.svg'>";
+    document.getElementById("chesstable").rows[7].cells[3].innerHTML = "<img width=50% src='images\\black_queen.svg'>";
+    document.getElementById("chesstable").rows[7].cells[1].innerHTML = "<img width=50% src='images\\black_knight.svg'>";
+    document.getElementById("chesstable").rows[7].cells[6].innerHTML = "<img width=50% src='images\\black_knight.svg'>";
+    document.getElementById("chesstable").rows[7].cells[0].innerHTML = "<img width=50% src='images\\black_rook.svg'>";
+    document.getElementById("chesstable").rows[7].cells[7].innerHTML = "<img width=50% src='images\\black_rook.svg'>";
+    document.getElementById("chesstable").rows[7].cells[2].innerHTML = "<img width=50% src='images\\black_bishop.svg'>";
+    document.getElementById("chesstable").rows[7].cells[5].innerHTML = "<img width=50% src='images\\black_bishop.svg'>";
+
+}
